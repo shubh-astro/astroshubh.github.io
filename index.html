@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. [Your Name] | Junior Research Fellow in Astrophysics</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Deep GitHub Dark Background */
+            color: #c9d1d9; /* Light gray text */
+            scroll-behavior: smooth;
+        }
+
+        /* --- CSS-ONLY STAR SHIFT ANIMATION --- */
+        @keyframes star-shift {
+            0% {
+                background-position: 50% 50%, 50% 50%, 50% 50%, 0 0;
+            }
+            100% {
+                /* Shifts the background layers slightly over time */
+                background-position: 55% 55%, 45% 45%, 52% 48%, 0 0;
+            }
+        }
+        
+        /* Custom Star Field Effect for Hero Section */
+        .star-field {
+            /* Star field layers using radial gradients */
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(200, 200, 255, 0.3) 0%, rgba(0, 0, 0, 0) 65%),
+                radial-gradient(circle at 70% 80%, rgba(255, 220, 200, 0.3) 0%, rgba(0, 0, 0, 0) 65%),
+                radial-gradient(circle at 45% 45%, rgba(150, 150, 255, 0.15) 0%, rgba(0, 0, 0, 0) 75%),
+                #0d1117;
+            background-size: 250% 250%, 250% 250%, 250% 250%, 100% 100%;
+            overflow: hidden; 
+
+            /* Apply the subtle animation for a guaranteed flowing effect */
+            animation: star-shift 60s linear infinite alternate;
+        }
+
+        /* Accent Color - A sophisticated Teal/Cyan */
+        .accent-color {
+            color: #58a6ff; /* GitHub Blue for links/accents */
+        }
+        .section-header {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            /* Using a subtle, wide shadow instead of a hard border for flow */
+            text-shadow: 0 0 10px rgba(88, 166, 255, 0.5); 
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Timeline Styles for Academic Section (softened) --- */
+        .timeline-container {
+            position: relative;
+            margin: 0 0 0 10px;
+        }
+        /* The central line */
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 3px; /* thinner line */
+            background-color: #1f2937; 
+            top: 0;
+            bottom: 0;
+            left: 2px; 
+            margin-left: -3px;
+        }
+        /* Item structure on small screens (all left) */
+        .timeline-item {
+            padding: 10px 0 10px 40px;
+            position: relative;
+            background-color: inherit;
+        }
+        /* The circle marker */
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: auto;
+            background-color: #58a6ff;
+            border: 3px solid #0d1117; /* Matches body background */
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            left: 0; 
+            box-shadow: 0 0 8px rgba(88, 166, 255, 0.7); /* Subtle glow */
+        }
+        /* Media query for larger screens (desktop timeline) */
+        @media (min-width: 768px) {
+            .timeline-container::after {
+                left: 50%; 
+            }
+            .timeline-item {
+                width: 50%;
+                padding: 10px 40px;
+            }
+            .timeline-item:nth-child(odd) {
+                left: 0;
+                padding-right: 60px; 
+            }
+            .timeline-item:nth-child(even) {
+                left: 50%;
+                padding-left: 60px; 
+            }
+            /* Position circles on the central line */
+            .timeline-item:nth-child(odd)::after {
+                left: auto;
+                right: -8px;
+            }
+            .timeline-item:nth-child(even)::after {
+                left: -8px;
+                right: auto;
+            }
+        }
+        /* --- End Timeline Styles --- */
+        .skill-badge {
+            @apply px-4 py-1.5 text-sm font-medium rounded-full bg-gray-800 text-blue-400 shadow-md transition duration-200 hover:bg-blue-900 hover:shadow-blue-500/50;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-black bg-opacity-90 shadow-2xl backdrop-blur-sm p-4 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#intro" class="text-xl font-bold accent-color hover:text-white transition duration-300">
+                [Your Initials] <span class="hidden sm:inline">| Astrophysics JRF</span>
+            </a>
+            <div class="space-x-4 text-sm sm:text-base">
+                <a href="#about" class="text-gray-300 hover:accent-color transition duration-300">About</a>
+                <a href="#academic" class="text-gray-300 hover:accent-color transition duration-300">Career</a>
+                <a href="#projects" class="text-gray-300 hover:accent-color transition duration-300">Research</a>
+                <a href="#skills" class="text-gray-300 hover:accent-color transition duration-300">Skills</a>
+                <a href="#contact" class="text-gray-300 hover:accent-color transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 1. Intro/Hero Section (Interactive Parallax + CSS Fallback) -->
+        <!-- The CSS animation now ensures the stars move subtly regardless of mouse input. -->
+        <section id="intro" class="star-field h-screen flex items-center justify-center text-center p-4 rounded-b-3xl shadow-2xl mb-24">
+            <div class="max-w-4xl space-y-6">
+                <h1 class="text-4xl sm:text-6xl lg:text-8xl font-extrabold text-white leading-tight">
+                    <span class="accent-color block mb-2">Dr. [Your Name]</span>
+                    Exploring the <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500">Cosmic Dawn</span>
+                </h1>
+                <p class="text-lg sm:text-2xl text-gray-300 font-light italic">
+                    Junior Research Fellow in Extragalactic Astrophysics
+                </p>
+                <div class="pt-4">
+                    <a href="#projects" class="inline-block px-8 py-3 text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                        View Research
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Me / Personal Profile -->
+        <section id="about" class="py-16">
+            <h2 class="section-header">About Me</h2>
+            <div class="grid md:grid-cols-3 gap-8 items-start">
+                <div class="md:col-span-2 text-lg leading-relaxed space-y-4 p-8 rounded-3xl bg-gray-900 shadow-inner hover:shadow-blue-900/50 transition duration-500">
+                    <p>
+                        I am a Junior Research Fellow at the [Your Institution Name], specializing in theoretical and observational cosmology. My work focuses on understanding the epoch of Reionization and the formation of the first stars and galaxies, utilizing large-scale simulations and data from cutting-edge telescopes like JWST.
+                    </p>
+                    <p>
+                        My core philosophy centers on bridging theoretical models with empirical data to refine our understanding of the universe's evolution. I am passionate about computational methods, high-performance computing (HPC), and translating complex astrophysical concepts for a broader audience.
+                    </p>
+                </div>
+                <div class="md:col-span-1 p-6 bg-gray-800 rounded-3xl shadow-lg hover:shadow-teal-900/50 transition duration-500">
+                    <h3 class="text-xl font-semibold mb-4 text-white border-b border-gray-700 pb-2">Interests & Hobbies</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-center space-x-2"><span>🔭</span><span class="hover:text-white transition">Astrophotography & Telescopic Observation</span></li>
+                        <li class="flex items-center space-x-2"><span>💻</span><span class="hover:text-white transition">Open-Source Scientific Software Development</span></li>
+                        <li class="flex items-center space-x-2"><span>⛰️</span><span class="hover:text-white transition">Long-Distance Hiking and Exploration</span></li>
+                        <li class="flex items-center space-x-2"><span>🎹</span><span class="hover:text-white transition">Classical Music Composition</span></li>
+                        <li class="flex items-center space-x-2"><span>📚</span><span class="hover:text-white transition">Science Communication and Public Outreach</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Academic Career (Timeline Flowchart) -->
+        <section id="academic" class="py-16">
+            <h2 class="section-header">Academic Career & Positions</h2>
+            <div class="timeline-container max-w-5xl mx-auto">
+                
+                <!-- Current Position -->
+                <div class="timeline-item">
+                    <div class="p-6 bg-gray-800 rounded-2xl shadow-xl transition duration-300 hover:shadow-blue-500/50">
+                        <p class="font-bold text-lg text-blue-400">2023 - Present</p>
+                        <p class="text-sm text-gray-500 mb-2">Post-Doctoral</p>
+                        <h3 class="text-xl font-semibold text-white">Junior Research Fellow (Astrophysics)</h3>
+                        <p class="text-gray-300">[Your Institution Name]</p>
+                        <ul class="list-disc list-inside mt-2 text-gray-400 text-sm">
+                            <li>Leading the "First Light Simulation" project focusing on high-redshift galaxy luminosity functions.</li>
+                            <li>Mentoring PhD and Master's students in computational physics.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PhD Education -->
+                <div class="timeline-item">
+                    <div class="p-6 bg-gray-900 rounded-2xl shadow-xl transition duration-300 hover:shadow-teal-500/50">
+                        <p class="font-bold text-lg text-teal-400">2019 - 2023</p>
+                        <p class="text-sm text-gray-500 mb-2">Doctorate</p>
+                        <h3 class="text-xl font-semibold text-white">Ph.D. in Theoretical Cosmology</h3>
+                        <p class="text-gray-300">[University Name], [City, Country]</p>
+                        <p class="text-gray-400 text-sm mt-1">Thesis: *The Role of Dark Matter Halos in Primordial Star Formation*</p>
+                    </div>
+                </div>
+
+                <!-- Master's Education -->
+                <div class="timeline-item">
+                    <div class="p-6 bg-gray-800 rounded-2xl shadow-xl transition duration-300 hover:shadow-indigo-500/50">
+                        <p class="font-bold text-lg text-indigo-400">2017 - 2019</p>
+                        <p class="text-sm text-gray-500 mb-2">Graduate</p>
+                        <h3 class="text-xl font-semibold text-white">M.Sc. in Physics (Specialization: High Energy)</h3>
+                        <p class="text-gray-300">[University Name], [City, Country]</p>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- 4. Research Projects (Modern/Interactive) -->
+        <section id="projects" class="py-16">
+            <h2 class="section-header">Key Research Projects</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Project 1: Reionization Simulations -->
+                <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl transition duration-300 hover:bg-gray-700 hover:shadow-blue-500/80 transform hover:scale-[1.03]">
+                    <h3 class="text-2xl font-bold accent-color mb-2">Cosmic Reionization Modeling</h3>
+                    <p class="text-sm text-gray-500 mb-4">Lead Investigator | Cosmology | 2023-Present</p>
+                    <p class="text-gray-400 text-sm">
+                        Development of novel semi-analytic models to track the ionization state of the IGM during the Epoch of Reionization, integrating stellar and quasar feedback mechanisms.
+                    </p>
+                    <div class="mt-4">
+                        <a href="https://github.com/[YourGitHub]/project-reion" target="_blank" class="text-xs font-semibold text-white bg-blue-600 py-1 px-3 rounded-full hover:bg-blue-700 transition duration-300 shadow-md">
+                            GitHub Repository &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Dark Matter Detection (Mock) -->
+                <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl transition duration-300 hover:bg-gray-700 hover:shadow-blue-500/80 transform hover:scale-[1.03]">
+                    <h3 class="text-2xl font-bold accent-color mb-2">Direct Dark Matter Detection Limits</h3>
+                    <p class="text-sm text-gray-500 mb-4">Contributor | Particle Astrophysics | 2021-2023</p>
+                    <p class="text-gray-400 text-sm">
+                        Statistical analysis of XENONnT data to constrain the cross-section of Weakly Interacting Massive Particles (WIMPs). Focus on advanced background subtraction techniques.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="text-xs font-semibold text-white bg-gray-600 py-1 px-3 rounded-full hover:bg-blue-700 transition duration-300 shadow-md">
+                            View Publication &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Planetary Dynamics Software -->
+                <div class="bg-gray-800 rounded-2xl p-6 shadow-2xl transition duration-300 hover:bg-gray-700 hover:shadow-blue-500/80 transform hover:scale-[1.03]">
+                    <h3 class="text-2xl font-bold accent-color mb-2">Exoplanet Orbital Stability Code</h3>
+                    <p class="text-sm text-gray-500 mb-4">Creator | Computational Physics | 2020</p>
+                    <p class="text-gray-400 text-sm">
+                        A Python library for N-body simulations to predict the long-term stability of multi-planet systems discovered by TESS.
+                    </p>
+                    <div class="mt-4">
+                        <a href="https://github.com/[YourGitHub]/Exo-Stability" target="_blank" class="text-xs font-semibold text-white bg-blue-600 py-1 px-3 rounded-full hover:bg-blue-700 transition duration-300 shadow-md">
+                            GitHub Repository &rarr;
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. Key Skills -->
+        <section id="skills" class="py-16">
+            <h2 class="section-header">Technical & Research Skills</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Programming & Tools -->
+                <div class="p-6 bg-gray-900 rounded-3xl shadow-xl transition duration-300 hover:shadow-blue-900/50">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Programming & Computing</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge">Python (Numpy, Scipy, Astropy)</span>
+                        <span class="skill-badge">C/C++ (HPC Optimisation)</span>
+                        <span class="skill-badge">Julia</span>
+                        <span class="skill-badge">MPI / OpenMP</span>
+                        <span class="skill-badge">Git & GitHub</span>
+                        <span class="skill-badge">Machine Learning (TensorFlow/PyTorch)</span>
+                        <span class="skill-badge">Bash/Linux</span>
+                    </div>
+                </div>
+
+                <!-- Research & Domain -->
+                <div class="p-6 bg-gray-900 rounded-3xl shadow-xl transition duration-300 hover:shadow-teal-900/50">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Domain & Software</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge">Cosmological N-body Simulations</span>
+                        <span class="skill-badge">Radiative Transfer</span>
+                        <span class="skill-badge">Spectroscopic Data Analysis</span>
+                        <span class="skill-badge">LaTeX / Scientific Writing</span>
+                        <span class="skill-badge">FITS Format Handling</span>
+                        <span class="skill-badge">Jupyter/Colab</span>
+                        <span class="skill-badge">Data Visualisation (Matplotlib, VisIt)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Publications and Talks -->
+        <section id="publications" class="py-16">
+            <h2 class="section-header">Selected Publications & Talks</h2>
+            <div class="space-y-6">
+                <!-- Pub 1 -->
+                <div class="p-4 bg-gray-800 rounded-2xl shadow-xl transition duration-300 hover:bg-gray-700 hover:shadow-indigo-500/50">
+                    <p class="text-sm text-gray-500">Article | The Astrophysical Journal, 2024</p>
+                    <p class="text-lg text-white font-medium">
+                        <a href="#" target="_blank" class="hover:accent-color">The Inhomogeneous Nature of Early Cosmic Reionization</a>
+                    </p>
+                    <p class="text-xs text-gray-400">[Your Name], A. Einstein, B. S. Blackhole</p>
+                    <p class="text-xs text-gray-500 mt-1">DOI: 10.3847/XXXXX | <a href="#" class="accent-color">View PDF</a></p>
+                </div>
+                <!-- Talk 1 -->
+                <div class="p-4 bg-gray-800 rounded-2xl shadow-xl transition duration-300 hover:bg-gray-700 hover:shadow-indigo-500/50">
+                    <p class="text-sm text-gray-500">Invited Talk | IAU Symposium 385, London, UK, 2024</p>
+                    <p class="text-lg text-white font-medium">
+                        Tracing Feedback Loops in High-Redshift Dwarf Galaxies
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Contact / Footer -->
+        <section id="contact" class="pt-16 pb-24 text-center">
+            <h2 class="section-header mb-8 inline-block">Get In Touch</h2>
+            <p class="text-xl text-gray-400 mb-8">
+                I am open to collaboration, discussion, and opportunities.
+            </p>
+            <a href="mailto:your.email@example.com" class="inline-block px-10 py-4 text-xl font-semibold text-white bg-green-600 hover:bg-green-700 rounded-lg shadow-2xl transition duration-300 transform hover:scale-105">
+                Send an Email
+            </a>
+            
+            <div class="mt-12 flex justify-center space-x-6">
+                <!-- Mock Icons - You'll need to link these to your real profiles -->
+                <a href="https://github.com/[YourGitHub]" target="_blank" class="text-gray-400 hover:accent-color transition duration-300" aria-label="GitHub">
+                    <!-- Placeholder for GitHub Icon (SVG) -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.805 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.692.084-.692 1.205.086 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.493.998.108-.776.419-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.118-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.559 21.782 24 17.203 24 12 24 5.373 18.627 0 12 0z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/[YourLinkedIn]" target="_blank" class="text-gray-400 hover:accent-color transition duration-300" aria-label="LinkedIn">
+                    <!-- Placeholder for LinkedIn Icon (SVG) -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.367-4-3.551-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.77 7 2.456v6.779z"/></svg>
+                </a>
+                <a href="https://orcid.org/[YourORCID]" target="_blank" class="text-gray-400 hover:accent-color transition duration-300" aria-label="ORCID">
+                    <!-- Placeholder for ORCID Icon (SVG - simplified) -->
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2.924 16.903c-.225 0-.406-.183-.406-.409v-8.187c0-.225.181-.409.406-.409h1.166c.225 0 .406.184.406.409v8.187c0 .226-.181.409-.406.409h-1.166zm1.716-11.458c-.571 0-1.037-.468-1.037-1.048s.466-1.047 1.037-1.047 1.037.467 1.037 1.047-.466 1.048-1.037 1.048zm6.592 11.458c-.226 0-.406-.183-.406-.409v-3.725c0-.62-.164-.997-.569-.997-.577 0-.713.513-.713 1.218v3.424c0 .225-.181.409-.406.409h-1.166c-.225 0-.406-.183-.406-.409v-8.187c0-.225.181-.409.406-.409h.996l.006.002c1.788 0 3.235 1.488 3.235 3.327v4.869c0 .225-.181.408-.406.408h-1.056z"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <footer class="text-center py-6 border-t border-gray-800 text-sm text-gray-500">
+            &copy; 2024 Dr. [Your Name]. Crafted with <span class="accent-color">Cosmic Code</span> and Tailwind CSS.
+        </footer>
+    </main>
+
+    <!-- JavaScript for Parallax Effect -->
+    <script>
+        const handleMouseMove = (e) => {
+            const introSection = document.getElementById('intro');
+            if (introSection) {
+                // Get viewport width and height
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+
+                // Calculate mouse position relative to center (-0.5 to 0.5)
+                const mouseX = e.clientX / width - 0.5;
+                const mouseY = e.clientY / height - 0.5;
+
+                // Sensitivity: determines how far the layers shift.
+                const sensitivity = 8; 
+
+                // Calculate new background position offsets
+                const offsetX = -mouseX * sensitivity;
+                const offsetY = -mouseY * sensitivity;
+
+                // Applying different rates for a 3D depth effect.
+                // NOTE: When this script runs, it overrides the CSS animation.
+                introSection.style.backgroundPosition = 
+                    `${50 + offsetX * 1.8}% ${50 + offsetY * 1.8}%, ` + /* Closest star layer (fastest) */
+                    `${50 + offsetX * 1.2}% ${50 + offsetY * 1.2}%, ` +   /* Middle star layer */
+                    `${50 + offsetX * 0.6}% ${50 + offsetY * 0.6}%, ` + /* Farthest star layer (slowest) */
+                    `center center`; /* Static base color */
+            }
+        };
+
+        // This event listener provides the cursor-based interactivity when deployed live.
+        document.addEventListener('mousemove', handleMouseMove);
+    </script>
+</body>
+</html>
